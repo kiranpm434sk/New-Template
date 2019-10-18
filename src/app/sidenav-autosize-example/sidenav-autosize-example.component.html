@@ -1,0 +1,52 @@
+<!-- <div class="container-fluid"> -->
+<mat-drawer-container class="example-container" autosize>
+
+    <nav class="navbar navbar-expand-lg navbar-info bg-info col-sm-12">
+    <div class="example-sidenav-content">
+        <button type=" btn btn-primary" mat-button (click)="drawer.toggle()">
+          Toggle sidenav
+        </button>
+        <div class="clock ">
+            <span class="hour">{{ hours }}:</span>
+            <span class="min">{{ minutes }}:</span>
+            <span class="second">{{ seconds }}</span>
+          </div>
+
+      </div>
+      </nav>
+
+    <div class="image"></div>
+         <header class="hero-header">
+    <marquee><h1><i>Are You Productive OR Just Bieng Busy?....</i></h1></marquee>
+    </header>
+
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+
+      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+
+          <ul class="navbar-nav">
+              <li class="nav-item ">
+                  <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active" ><h3>Home</h3><span class="sr-only">(current)</span></a>
+                </li><br>
+
+            <li class="nav-item ">
+              <a class="nav-link" [routerLink]="['/tabledisp']" routerLinkActive="router-link-active" ><h3>Design Operations</h3> <span class="sr-only">(current)</span></a>
+            </li><br>
+            <li class="nav-item ">
+              <a class="nav-link" [routerLink]="['/list']" routerLinkActive="router-link-active" ><h3>Employee List</h3> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#"></a>
+            </li>
+
+          </ul>
+
+    </mat-drawer>
+
+
+
+  </mat-drawer-container>
+<!-- </div> -->
