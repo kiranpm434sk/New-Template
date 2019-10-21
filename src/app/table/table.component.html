@@ -20,14 +20,15 @@
   <!-- <marquee> -->
   <table class="table">
 
-    <tr>
+    <tr  class="bg-primary">
       <th>Index</th><br>
       <th>Id</th>
       <th>Name</th><br>
       <th>Description</th><br>
       <th>Actions</th><br>
     </tr>
-    <tr *ngFor="let item of list | paginate: config; let i=index">
+
+    <tr *ngFor="let item of list | paginate: config; let i=index" class="table-primary">
       <td>{{i+1}}</td><br>
       <td>{{item.id}}</td>
       <td>{{item.name}}</td><br>

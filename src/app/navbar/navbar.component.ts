@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TabledataService } from '../tabledata.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   // showFiller = false;
-  constructor() { }
+  visibleSidebar1;
+
+  constructor(private _userdata:TabledataService) { }
 
   hours: string;
   minutes: string;
@@ -38,5 +41,11 @@ export class NavbarComponent implements OnInit {
 
   private leftPadZero(value: number) {
     return value < 10 ? `0${value}` : value.toString();
+  }
+  onLogOut(){
+    this._userdata.logout();
+  }
+  isLoggedIn(){
+    return this._userdata.isLoggedIn;
   }
 }

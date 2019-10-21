@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Designation } from './designation';
 import { TabledataService } from '../tabledata.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material';
 // import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
 // import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 @Component({
@@ -15,6 +16,7 @@ export class TableComponent implements OnInit {
   config: any;
   collection = [];
   id:number;
+  dataSource = new MatTableDataSource<Designation>();
   constructor(private _data: TabledataService, private fb: FormBuilder) {
     this.config = {
       itemsPerPage: 5,

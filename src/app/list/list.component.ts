@@ -133,22 +133,7 @@ export class ListComponent implements OnInit {
     );
   }
 
-  // onUpdate(f1) {
-  //   var req = {
-  //     id: f1.value.id,
-  //     name: f1.value.name,
-  //     description: f1.value.description
-  //   }
-  //   this._data.addDesignations(req).subscribe((data: any) => {
-  //     this._data.getAllDesignations().subscribe(
-  //       ( data: Designation[]) => {
-  //         this.list = data;
-  //       }
-  //     );
-  //     alert('record edited');
-  //     this.ngOnInit();
-  //   });
-  // }
+
   close() {
     this.tableForm.reset();
   }
@@ -171,24 +156,10 @@ export class ListComponent implements OnInit {
 
   }
 
-
-
-
-
-  // openModal(template: TemplateRef<any>) {
-  //   // this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
-  // }
-
-  // confirm(): void {
-  //   this.message = 'Confirmed!';
-  //   this.modalRef.hide();
-  // }
-
-  // decline(): void {
-  //   this.message = 'Declined!';
-  //   this.modalRef.hide();
-  // }
 }
+
+
+
 
 export interface Item {
   id: number;

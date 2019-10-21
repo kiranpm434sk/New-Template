@@ -1,0 +1,27 @@
+<div class="image"></div>
+<div class="container">
+
+    <h1>Sign Up Form</h1>
+  <form (ngSubmit)="onLoginSubmit(f)" #f="ngForm" >
+      <div class="form-group" >
+        <label>User Email</label>
+        <input name="user_email" required email ngModel #user_email="ngModel"  type="text" class="form-control" placeholder="Enter Email address">
+        <label class="alert alert-danger" *ngIf="user_email.hasError('required') && !user_email.pristine"  >Email is required.</label>
+        <label class="alert alert-danger" *ngIf="user_email.hasError('email') && !user_email.pristine"  >Email is invalid.</label>
+      </div>
+
+
+      <div class="form-group" >
+        <label>User password</label>
+        <input  minlength="3" required name="user_password" #user_password="ngModel" ngModel type="password" class="form-control" placeholder="Enter password ">
+        <label class="alert alert-danger" *ngIf="user_password.hasError('required') && !user_password.pristine"  >Password is required.</label>
+        <label class="alert alert-danger" *ngIf="user_password.hasError('minlength')">Min 3 Charecters is required!</label>
+      </div>
+
+
+      <div class="form-group">
+        <button [disabled]="!f.valid" required type="submit" class="form-control btn btn-primary" >Save User</button>
+
+      </div>
+    </form>
+  </div>

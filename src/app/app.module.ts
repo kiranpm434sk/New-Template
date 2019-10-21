@@ -3,22 +3,22 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { routing } from './app.routing';
 import { ListdisplayComponent } from './listdisplay/listdisplay.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {MatSidenavModule, MatMenuModule, MatTableModule} from '@angular/material';
+import {MatSidenavModule, MatMenuModule, MatTableModule, MatCheckboxModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ListComponent } from './list/list.component';
 import {MatListModule} from '@angular/material/list';
-// import { MatMenuTrigger } from '@angular/material/menu';
-// import { BsModalService,  BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
-
-// import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SidenavAutosizeExampleComponent } from './sidenav-autosize-example/sidenav-autosize-example.component';
+import {SidebarModule} from 'primeng/sidebar';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
-// import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MatPaginatorModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +28,10 @@ import { SidenavAutosizeExampleComponent } from './sidenav-autosize-example/side
     ListComponent,
 
     SidenavAutosizeExampleComponent,
+
+    LoginComponent,
+
+    DashboardComponent,
     // BsModalService
   ],
   imports: [
@@ -41,6 +45,16 @@ import { SidenavAutosizeExampleComponent } from './sidenav-autosize-example/side
     MatListModule,
     MatMenuModule,
     MatTableModule,
+    SidebarModule,
+    FormsModule,
+    MatCheckboxModule,
+
+    MatPaginatorModule,
+    BsDatepickerModule.forRoot(),
+
+
+
+
     // ModalModule,
 
 
