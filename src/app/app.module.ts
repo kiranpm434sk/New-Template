@@ -19,6 +19,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { MatPaginatorModule } from '@angular/material';
+
+import { RatingModule } from 'ngx-bootstrap';
+// import { TreeTableContextMenuDemoComponent } from './tree-table-context-menu-demo/tree-table-context-menu-demo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,8 @@ import { MatPaginatorModule } from '@angular/material';
     LoginComponent,
 
     DashboardComponent,
+
+    // TreeTableContextMenuDemoComponent,
     // BsModalService
   ],
   imports: [
@@ -51,6 +56,8 @@ import { MatPaginatorModule } from '@angular/material';
 
     MatPaginatorModule,
     BsDatepickerModule.forRoot(),
+    RatingModule.forRoot(),
+
 
 
 

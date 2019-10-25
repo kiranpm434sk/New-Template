@@ -15,7 +15,8 @@ export class TableComponent implements OnInit {
   tableForm: FormGroup;
   config: any;
   collection = [];
-  id:number;
+  id: number;
+  y: number = 2;
   dataSource = new MatTableDataSource<Designation>();
   constructor(private _data: TabledataService, private fb: FormBuilder) {
     this.config = {
@@ -26,125 +27,125 @@ export class TableComponent implements OnInit {
   }
 
 
-ngOnInit() {
-  this.tableForm = this.fb.group({
-    id: new FormControl(null),
-    name: new FormControl(null),
-    description: new FormControl(null)
+  ngOnInit() {
+    this.tableForm = this.fb.group({
+      id: new FormControl(null),
+      name: new FormControl(null),
+      description: new FormControl(null)
 
-  });
-  this.getDesig();
-  // this.tableForm.patchValue({
-  //    id: this.tableForm.value.id,
-  //   name: this.tableForm.value.name,
-  //   description: this.tableForm.value.description
+    });
+    this.getDesig();
+    // this.tableForm.patchValue({
+    //    id: this.tableForm.value.id,
+    //   name: this.tableForm.value.name,
+    //   description: this.tableForm.value.description
 
-  // });
-}
-
-
-pageChanged(event){
-  this.config.currentPage = event;
-}
+    // });
+  }
 
 
-onSearch(value) {
+  pageChanged(event) {
+    this.config.currentPage = event;
+  }
 
-  console.log(value);
-  if (value != '') {
-    this.list = this.list.filter(x => x.name.indexOf(value) != -1);
+
+  onSearch(value) {
+
+    console.log(value);
+    if (value != '') {
+      this.list = this.list.filter(x => x.name.indexOf(value) != -1);
+
+    }
+    else {
+      this._data.getAllDesignations().subscribe(
+        (data: Designation[]) => {
+          this.list = data;
+        },
+        function (error) {
+          alert(error);
+        },
+        function () { }
+      );
+    }
+    // this.GetEmp();
 
   }
-  else {
+
+
+  getDesig() {
     this._data.getAllDesignations().subscribe(
       (data: Designation[]) => {
         this.list = data;
+        console.log(this.list);
       },
       function (error) {
         alert(error);
       },
       function () { }
+
     );
   }
-  // this.GetEmp();
-
-}
-
-
-getDesig() {
-  this._data.getAllDesignations().subscribe(
-    (data: Designation[]) => {
-      this.list = data;
-      console.log(this.list);
-    },
-    function (error) {
-      alert(error);
-    },
-    function () { }
-
-  );
-}
 
 
 
-//Delete Method
-onDesigDelete(item) {
-  console.log(item);
-  this._data.deleteDesignations(item.id).subscribe((data: any) => {
-    this.list.splice(this.list.indexOf(item), 1);
-    alert('deleted');
-    this.ngOnInit();
-
-  });
-
-}
-
-
-onFormSubmit(item){
-  console.log(item);
-  var req = {
-    id: 0,
-    description: item.description,
-    name: item.name
-  };
-  this._data.addDesignations(req).subscribe(
-    (data: Designation[]) => {
-      this.list = data;
-      alert('succefully added');
+  //Delete Method
+  onDesigDelete(item) {
+    console.log(item);
+    this._data.deleteDesignations(item.id).subscribe((data: any) => {
+      this.list.splice(this.list.indexOf(item), 1);
+      alert('deleted');
       this.ngOnInit();
-    },
-    function (error) {
-      alert(error);
-    },
-    function () { }
+
+    });
+
+  }
 
 
-  );
-
-}
-close(){
-  this.tableForm.reset();
-}
-openedit(item){
-  console.log(item.id);
-  this.tableForm.patchValue({
-    id: item.id,
-    name: item.name,
-    description: item.description
-
-  });
-}
-onFormUpdate(tableForm) {
-  console.log(tableForm);
-  this._data.editDesignations(tableForm).subscribe(
-    (data: Designation[]) => {
-      // this.modalref = this.modalService.show(this.id);
-      // var test = this.modalService.getModalsCount();
+  onFormSubmit(item) {
+    console.log(item);
+    var req = {
+      id: 0,
+      description: item.description,
+      name: item.name
+    };
+    this._data.addDesignations(req).subscribe(
+      (data: Designation[]) => {
+        this.list = data;
+        alert('succefully added');
+        this.ngOnInit();
+      },
+      function (error) {
+        alert(error);
+      },
+      function () { }
 
 
-      this.getDesig();
-      this.tableForm.reset();
-    }
-  );
-}
+    );
+
+  }
+  close() {
+    this.tableForm.reset();
+  }
+  openedit(item) {
+    console.log(item.id);
+    this.tableForm.patchValue({
+      id: item.id,
+      name: item.name,
+      description: item.description
+
+    });
+  }
+  onFormUpdate(tableForm) {
+    console.log(tableForm);
+    this._data.editDesignations(tableForm).subscribe(
+      (data: Designation[]) => {
+        // this.modalref = this.modalService.show(this.id);
+        // var test = this.modalService.getModalsCount();
+
+
+        this.getDesig();
+        this.tableForm.reset();
+      }
+    );
+  }
 }

@@ -1,6 +1,16 @@
 <div class="image"></div>
 <div class="container">
-
+    <div>
+        <rating [max]="10" [(ngModel)]="y" [customTemplate]="tt"></rating>
+        <div class="card">
+          <pre class="card-block card-header" style="margin:15px 0;"> <b>(<i>Rate:</i> {{y}})</b> </pre>
+        </div>
+        <ng-template #tt let-i="index" let-v="value">
+          <button class="btn btn-{{i < v ? 'warning' : 'default'}}">
+            {{i < v ? '&#9733;' : '&#9734;'}}
+          </button>
+        </ng-template>
+      </div>
 
   <div>
     <marquee><b><i>

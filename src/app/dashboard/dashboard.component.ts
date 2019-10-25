@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     this.selection.selected.forEach(item => {
       let index: number = this.data.findIndex(d => d === item);
       console.log(this.data.findIndex(d => d === item));
-      this.data.splice(index,1)
+      this.data.splice(index, 1);
       this.dataSource = new MatTableDataSource<Element>(this.data);
     });
     this.selection = new SelectionModel<Element>(true, []);

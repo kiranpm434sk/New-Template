@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TabledataService {
-  url: string = 'https://3df52e24.ngrok.io/api/Settings/GetDesignations';
-  url1: string ='https://3df52e24.ngrok.io/api/Settings/InsUpdateDesignation';
-  url2: string ='https://3df52e24.ngrok.io/api/Settings/DeleteDesignation?DesignationId=';
+  url: string = 'https://5df2226b.ngrok.io/api/Settings/GetDesignations';
+  url1: string ='https://5df2226b.ngrok.io/api/Settings/InsUpdateDesignation';
+  url2: string ='https://5df2226b.ngrok.io/api/Settings/DeleteDesignation?DesignationId=';
   redirectURL: any;
   currentUser: { user_email: string; password: string; isAdmin: boolean; };
   constructor(private http: HttpClient,private _router:Router) { }
 
-//Gett Method
+// Gett Method
   getAllDesignations(){
    return this.http.get(this.url);
   }
 
-//Add Method
+// Add Method
 addDesignations(item){
   console.log(item);
   let body = JSON.stringify(item);
@@ -26,7 +26,7 @@ addDesignations(item){
   return this.http.post(this.url1, body , {headers: head});
 }
 
-//Edit Method
+// Edit Method
 editDesignations(item){
   let body = JSON.stringify(item);
   let head = new HttpHeaders().set("content-Type","application/json");
@@ -34,7 +34,7 @@ editDesignations(item){
 }
 
 
-//Delete Method
+// Delete Method
 deleteDesignations(DesignationId){
   console.log(DesignationId);
   let head = new HttpHeaders().set("content-Type","application/json");
